@@ -1,0 +1,39 @@
+set ai
+set ts=2
+set sw=2
+set expandtab
+set ruler
+set noerrorbells
+set showmatch
+set mat=5
+set background=dark
+
+call pathogen#infect()
+syntax on
+filetype plugin indent on
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+filetype on  " Automatically detect file types.
+set nocompatible  " We don't want vi compatibility.
+
+" Add recently accessed projects menu (project plugin)
+set viminfo^=!
+
+" Minibuffer Explorer Settings
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+" alt+n or alt+p to navigate between entries in QuickFix
+map <silent> <m-p> :cp <cr>
+map <silent> <m-n> :cn <cr>
+" Change which file opens after executing :Rails command
+let g:rails_default_file='config/database.yml'
+set clipboard+=unnamed  " Yanks go on clipboard instead

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+preset=$PS1
+
+setkonsoletabtitle () {
+	echo -en "\e]30;$*\a"
+} 
+
+klist &>/dev/null
+if [ $? -ne 0 ]; then
+	kdestroy &>/dev/null && kinit $LOGNAME/root
+else
+	echo Logging in with principal $LOGNAME/root
+fi
+
+echo -en "\033]2;root@$1\007"
+
+setkonsoletabtitle "$1"
+
+ssh -p 3022 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$1

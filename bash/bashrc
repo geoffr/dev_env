@@ -47,7 +47,7 @@ function git_prompt {
 function prompt_func() {
   prompt_extra=""
   if [ -e ~/.rvm/scripts/rvm ]; then
-    extra=$(rvm current)
+    extra="$(rvm current)"
     if [ $extra == "system" ]; then
       prompt_extra=""
     else

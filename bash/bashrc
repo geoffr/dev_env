@@ -45,11 +45,14 @@ function git_prompt {
 }
 
 function prompt_func() {
-  extra=$(rvm current)
-  if [ $extra == "system" ]; then
-    prompt_extra=""
-  else
-    prompt_extra="[$extra]"
+  prompt_extra=""
+  if [ -e ~/.rvm/scripts/rvm ]; then
+    extra=$(rvm current)
+    if [ $extra == "system" ]; then
+      prompt_extra=""
+    else
+      prompt_extra="[$extra]"
+    fi
   fi
   prompt="${prompt_extra}[${c_user}\u${c_reset}]${c_path}\w${c_reset}$(git_prompt)\$ "
   PS1="${prompt}"

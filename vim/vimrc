@@ -11,6 +11,8 @@ set background=dark
 syntax on
 filetype plugin indent on
 
+set paste
+
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/

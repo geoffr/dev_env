@@ -19,6 +19,7 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
+alias pm='/usr/local/bin/s puppetmaster-staging2.cpt3.host-h.net'
 
 c_reset='\[\033[0;32m\]'
 c_user='\[\033[0;37m\]'
